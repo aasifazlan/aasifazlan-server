@@ -9,13 +9,14 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: 'https://aasifazlan-portfolio.vercel.app',  
-    
+  origin: ['http://localhost:5173', 'https://aasifazlan-portfolio.vercel.app'],
 }));
+
+
 app.use(express.json());
 
 // POST route to receive contact form data
-app.post('/send', async (req, res) => {
+app.post('/api/send', async (req, res) => {
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
